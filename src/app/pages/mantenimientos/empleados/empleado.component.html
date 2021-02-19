@@ -1,0 +1,115 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Empleado</h4>
+                <h6 class="card-subtitle">Actualizar información</h6>
+
+                <form class="form-horizontal p-t-20" [formGroup]="empleadoForm" (submit)="guardarEmpleado()">
+
+                    <div class="form-group row" *ngIf="empleadoSeleccionado">
+                        <label for="exampleInputuname3" class="col-sm-3 control-label">Foto</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <img style="width: 100px;" [src]="empleadoSeleccionado.img | imagen: 'empleados'" class="w200" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngFor="let propiedad of propiedades">
+
+                        <div class="form-group row">
+                            <label for="exampleInputuname3" class="col-sm-3 control-label">{{propiedad.label}}</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"></div>
+                                    <input type="{{propiedad.type}}" formControlName="{{propiedad.formControlName}}" class="form-control" id="exampleInputuname3" placeholder="{{propiedad.placeholder}}">
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--              <div class="form-group row">
+                        <label for="exampleInputuname3" class="col-sm-3 control-label">Apellido</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input type="text" formControlName="lastname" class="form-control" id="exampleInputuname3" placeholder="Apellido">
+
+                            </div>
+
+                        </div>
+                    </div> -->
+
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname3" class="col-sm-3 control-label">Cuil</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input type="text" formControlName="cuil" class="form-control" id="exampleInputuname3" placeholder="Cuil">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname3" class="col-sm-3 control-label">Año de nacimiento</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input type="date" formControlName="birthDate" class="form-control" id="exampleInputuname3" placeholder="birth">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputEmail3" class="col-sm-3 control-label">sector</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <select class="form-control" formControlName="sector">
+                                  <option value="">Seleccione sector</option>
+                                  <option *ngFor="let sector of sectores"
+                                      [value]="sector._id">
+                                      {{ sector.nombre }}
+                                  </option>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row m-b-0">
+                        <div class="offset-sm-3 col-sm-9">
+                            <button type="submit" [disabled]="empleadoForm.invalid" class="btn btn-success waves-effect waves-light">
+                              <i class="fa fa-save"></i>
+                              Guardar
+                          </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col animated fadeIn fast" *ngIf="sectorSeleccionado">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Sector</h4>
+                <h6 class="card-subtitle">{{ sectorSeleccionado.nombre }}</h6>
+
+                <img [src]="sectorSeleccionado.img | imagen:'sectores'" class="img-thumbnail" />
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <mat-card>
+            <mat-card-content>
+
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Buscar usuario...</mat-label>
+                        <input matInput placeholder="Ex. Hospital Materno Infantil" type="text" #txtTermino (keyup)="buscar(txtTermino.value)">
+                    </mat-form-field>
+                </form>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<br>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+
+        <div class="alert  text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row animated fadeIn fast" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <mat-card-title>Total de usuarios ({{ totalUsuarios }})</mat-card-title>
+                <mat-card-subtitle>Usuarios registrados en mi aplicación </mat-card-subtitle>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="w100">Avatar</th>
+                                <th>Correo</th>
+                                <th>Nombre</th>
+                                <th class="w140">Role</th>
+                                <th class="w100">Auth</th>
+                                <th class="text-nowrap w100">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of usuarios">
+                                <td class="text-center">
+                                    <img style="width: 150px;" [src]="usuario.imagenUrl" alt="Avatar de usuario" class=" cursor" (click)="abrirModal(usuario)">
+                                </td>
+                                <td>{{ usuario.email }}</td>
+                                <td>{{ usuario.nombre }}</td>
+
+                                <td>
+                                    <select class="form-control" [(ngModel)]="usuario.role" (change)="cambiarRole( usuario )">
+                                        <option value="ADMIN_ROLE">Admin</option>
+                                        <option value="USER_ROLE">User</option>
+                                    </select>
+                                </td>
+
+                                <td>
+                                    <span *ngIf="usuario.google" class="badge badge-pill badge-primary">Google</span>
+                                    <span *ngIf="!usuario.google" class="badge badge-pill badge-primary">Email</span>
+                                </td>
+
+                                <td class="text-nowrap text-center">
+                                    <a data-toggle="tooltip" data-original-title="Borrar" class="cursor" (click)="eliminarUsuario(usuario)">
+                                        <i class="fa fa-close text-danger"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div *ngIf="txtTermino.value.length === 0">
+                    <button (click)="cambiarPagina(-5)" class="btn btn-secondary">Anteriores</button> &nbsp;
+                    <button (click)="cambiarPagina(5)" class="btn btn-secondary">Siguientes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

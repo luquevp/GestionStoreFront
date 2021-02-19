@@ -1,0 +1,71 @@
+<div class="limiter animated fadeInLeft">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <form class="" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()" id="loginform" class="login100-form validate-form flex-sb flex-w">
+
+                <span class="login100-form-title p-b-51">
+                  Login
+              </span>
+
+                <span *ngIf="" class="text-danger animated fadeIn">El correo es obligatorio</span>
+
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="email" placeholder="Email" formControlName="email">
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <span *ngIf="" class="text-danger animated fadeIn"></span>
+                <div class="wrap-input100 m-b-16" data-validate="Password is required">
+
+                    <input class="input100" type="password" placeholder="Password" formControlName="password">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="flex-sb-m w-full p-t-3 p-b-24">
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="checkbox-signup" type="checkbox" formControlName="remember">
+                        <label class="label-checkbox100" for="ckb1">
+                          Recordarme
+                      </label>
+                    </div>
+
+                    <div>
+                        <a href="javascript:void(0)" id="to-recover" class="txt1 pull-right"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a>
+
+
+                    </div>
+                </div>
+
+                <div class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn" type="submit">
+                      Ingresar
+                  </button>
+
+
+
+                </div>
+
+
+
+
+                <br>
+
+                <div class="row text-center ">
+                    <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 mb-4 text-center" id="google-btn">
+
+
+                    </div>
+                </div>
+
+                <div class="col-sm-12 text-center txt1">
+                    Don't have an account?
+                    <br> <a routerLink="/register" class="txt1"><b> Sign Up</b></a>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>

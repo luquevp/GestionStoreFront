@@ -1,0 +1,62 @@
+<div class="invisible-scrollbar">
+    <mat-nav-list class="app-container">
+
+        <ul id="sidebarnav">
+            <li class="user-profile profile-card text-center">
+                <a class="has-arrow waves-effect waves-dark " href="#" aria-expanded="false">
+                    <img [src]="usuario.imagenUrl" alt="user" />
+                    <br>
+                    <span class="hide-menu">{{ usuario.nombre }} </span>
+                </a>
+                <!--   <ul>
+                    <li><a routerLinkActive="active" routerLink="./perfil">My Profile </a></li>
+                    <li><a routerLink="account-settings">Account Setting</a></li>
+                    <li><a (click)="logout()">Logout</a></li>
+                </ul> -->
+            </li>
+            <li class="nav-devider"></li>
+
+            <li *ngFor="let item of menuItems">
+                <mat-divider></mat-divider>
+
+                <a>
+                    <h2 matSubheader>
+                        <i [class]="item.icono"></i>
+                        <span> 
+                            {{ item.titulo }} 
+                         
+                        </span>
+                        <!--      <span class="text-right pull-right">
+                            {{ item.submenu.length }}
+                           </span> -->
+                    </h2>
+                </a>
+
+                <ul>
+                    <li *ngFor="let subMenuItem of item.submenu">
+                        <a mat-list-item routerLinkActive="list-item-active" [routerLink]="subMenuItem.url" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> {{ subMenuItem.titulo }} </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+        <!-- End Sidebar navigation -->
+
+
+        <mat-divider></mat-divider>
+
+        <h2 matSubheader>Tools</h2>
+
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+            <mat-icon>import_contacts</mat-icon>
+            Contacts
+        </a>
+
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+            <mat-icon>contact_phone</mat-icon>
+            Leads
+        </a>
+
+
+    </mat-nav-list>
+</div>
